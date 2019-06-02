@@ -6,6 +6,7 @@
       <p class="card-text text-danger">{{movie.overview}}</p>
     </div>
     <ul class="list-group list-group-flush">
+<!--      fills the stars according o rating -->
       <li class="list-group-item">Rating:
         <ng-template #t let-fill="fill">
           <span class="star" [class.full]="fill === 100">
