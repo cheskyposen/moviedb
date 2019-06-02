@@ -1,0 +1,19 @@
+<div *ngIf="movie" class="mx-auto my-3">
+<div class="card" style="width: 500px;">
+  <img *ngIf="movie.backdropPath" [src]="'https://image.tmdb.org/t/p/w500' + movie.backdropPath" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3>{{movie.title}}</h3>
+    <p class="card-text">{{movie.overview}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Rating:
+      <ngb-rating [(rate)]="movie.voteAverage" [readonly]="true"  max="10">
+        <ng-template let-fill="fill" let-index="index">
+          <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+        </ng-template>
+      </ngb-rating>
+    </li>
+    <li class="list-group-item">Vote count: {{movie.voteCount}}</li>
+  </ul>
+</div>
+</div>

@@ -1,0 +1,45 @@
+<div class="pt-3">
+  <form (ngSubmit)="movieSearch()">
+  <p class="mt-3">
+    <mat-form-field appearance="legacy" class="w-100">
+      <mat-label>Search for Movies</mat-label>
+      <input matInput placeholder="Placeholder" [(ngModel)]="moviedb.query" name="query">
+      <mat-icon matSuffix color="warn" (click)="movieSearch()">search</mat-icon>
+    </mat-form-field>
+  </p>
+  </form>
+</div>
+
+<div *ngIf="movies">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Overview</th>
+    <th scope="col">Avg vote</th>
+    <th scope="col">Popularity</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of moviesRes">
+    <th scope="row"><a mat-button [routerLink]="'/details/' + movie.id" color="accent">{{ movie.title }}</a></th>
+    <td>{{ movie.overview }}</td>
+    <td>{{ movie.voteAverage | number}}</td>
+    <td>{{ movie.popularity | number }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+  </ngb-pagination>
+
+  <label>
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </label>
+</div>
+</div>
