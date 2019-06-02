@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import {MoviedbService} from '../../../models/moviedb.service';
 import {ActivatedRoute} from '@angular/router';
 import {Movie} from '../../../models/movie';
@@ -8,7 +8,7 @@ import {Movie} from '../../../models/movie';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss']
 })
-export class MovieComponent implements OnInit {
+export class MovieComponent {
   id: string;
   movie: Movie;
   constructor(private moviedb: MoviedbService, private route: ActivatedRoute) {
@@ -17,10 +17,4 @@ export class MovieComponent implements OnInit {
       this.moviedb.fetchMovieById(this.id).subscribe((res) => this.movie = new Movie(res));
     });
   }
-
-  ngOnInit() {
-
-  }
-
-
 }

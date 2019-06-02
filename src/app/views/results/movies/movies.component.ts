@@ -8,10 +8,9 @@ import {Movie} from '../../../models/movie';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  query = '';
   movies: Movie[];
   page = 1;
-  pageSize = 4;
+  pageSize = 3;
   collectionSize: number;
   constructor(
     public moviedb: MoviedbService
@@ -22,7 +21,7 @@ export class MoviesComponent implements OnInit {
 
   movieSearch() {
     this.moviedb.movieSearch(this.moviedb.query).subscribe( results => {
-      // console.log(results);
+      console.log(results);
       this.movies = results;
       this.collectionSize = this.movies.length;
     });
